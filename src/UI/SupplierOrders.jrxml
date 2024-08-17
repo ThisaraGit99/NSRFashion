@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d7aab3dd-25d7-42d2-91c3-19454d6d9a76">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     supplierorders.`ID` AS supplierorders_ID,
+     supplierorders.`Supplier` AS supplierorders_Supplier,
+     supplierorders.`Message` AS supplierorders_Message,
+     supplierorders.`Date` AS supplierorders_Date
+FROM
+     `supplierorders` supplierorders
+GROUP BY
+     supplierorders.`Date`]]>
+	</queryString>
+	<field name="supplierorders_ID" class="java.lang.Integer"/>
+	<field name="supplierorders_Supplier" class="java.lang.String"/>
+	<field name="supplierorders_Message" class="java.lang.String"/>
+	<field name="supplierorders_Date" class="java.lang.String"/>
+	<variable name="Total" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{supplierorders_ID}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="12" y="11" width="263" height="33" forecolor="#006666" backcolor="#333333" uuid="9d4cc025-65b6-46df-8585-e5c9903a4660"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Supplier Orders]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="6de09a3b-0634-4b9e-b30e-689e05e71859"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="36" height="15" uuid="6ffeda14-3c0f-4f47-90b2-0fb76bfd1fb4"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="174" y="19" width="240" height="15" uuid="9230545a-432a-4fa9-b195-213e37332692"/>
+				<text><![CDATA[Message]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="414" y="19" width="138" height="15" uuid="17063b05-f43c-4fc0-98fe-2ac7444847fb"/>
+				<text><![CDATA[Order Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="36" y="19" width="138" height="15" uuid="bc3c834b-4eaf-40d5-95ae-9c4f4f7f58cf"/>
+				<text><![CDATA[Supplier]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="dae9bd4c-88ca-4228-ba4e-1402a0a7a590"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="36" height="15" uuid="2c0f7aa2-e09b-4c1d-939d-4c17c413f890"/>
+				<textFieldExpression><![CDATA[$F{supplierorders_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="414" y="0" width="138" height="15" uuid="c85c3e54-bc53-41bf-85b7-5c12d18167cf"/>
+				<textFieldExpression><![CDATA[$F{supplierorders_Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="36" y="0" width="138" height="15" uuid="cecef59b-c5a0-4d64-8c13-e108337a6513"/>
+				<textFieldExpression><![CDATA[$F{supplierorders_Supplier}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="174" y="1" width="240" height="15" uuid="e68a3c3b-facc-46ff-8d49-688df132dd31"/>
+				<textFieldExpression><![CDATA[$F{supplierorders_Message}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="4a38bde5-2f5b-4a54-ab50-7589bbd7cbf6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="452" y="18" width="100" height="20" uuid="b1b60956-5ead-42d7-8319-ec6d6cca1acf"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="339" y="18" width="100" height="20" uuid="9ee37dfd-5ddc-4028-8af4-bd85ca20d3a3"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Orders:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="11" width="555" height="1" uuid="30f3849c-4e69-4fd9-9f30-219ebc46537d"/>
+			</line>
+			<line>
+				<reportElement x="0" y="44" width="552" height="1" uuid="1339ec56-ef09-4f5f-b2b6-40ec4d920bd4"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

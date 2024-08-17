@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c13bc29f-b4f7-4e8e-8f0c-b3478fafeb6f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Date" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     sales.`SaleID` AS sales_SaleID,
+     sales.`CustomerID` AS sales_CustomerID,
+     sales.`Cash` AS sales_Cash,
+     sales.`LoyaltyPoints` AS sales_LoyaltyPoints,
+     sales.`Discount` AS sales_Discount,
+     sales.`subtotal` AS sales_subtotal,
+     sales.`TotalPrice` AS sales_TotalPrice,
+     sales.`Balance` AS sales_Balance,
+     sales.`Date` AS sales_Date
+FROM
+     `sales` sales
+WHERE sales.Date=$P{Date}]]>
+	</queryString>
+	<field name="sales_SaleID" class="java.lang.Integer"/>
+	<field name="sales_CustomerID" class="java.lang.String"/>
+	<field name="sales_Cash" class="java.lang.Double"/>
+	<field name="sales_LoyaltyPoints" class="java.lang.Double"/>
+	<field name="sales_Discount" class="java.lang.Double"/>
+	<field name="sales_subtotal" class="java.lang.Double"/>
+	<field name="sales_TotalPrice" class="java.lang.Double"/>
+	<field name="sales_Balance" class="java.lang.Double"/>
+	<field name="sales_Date" class="java.lang.String"/>
+	<variable name="variable1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{sales_TotalPrice}]]></variableExpression>
+	</variable>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="447900eb-c22b-43ef-bc44-a8fe31125d17"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="e446d617-1ed5-4379-897c-aca7e4e7d24a"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Daily Sales]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="421" y="43" width="43" height="20" forecolor="#FFFFFF" uuid="0011badb-c22a-4d6e-8cfb-c2251a1e580b"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Date -]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="471" y="43" width="100" height="20" forecolor="#FFFFFF" uuid="a9c9db06-6486-473e-b9fb-aba5c18ec88b"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$P{Date}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28">
+			<line>
+				<reportElement x="-21" y="25" width="595" height="1" forecolor="#666666" uuid="def2db5c-1770-4b10-84c0-ac68613cdc23"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="21" y="3" width="61" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="94546eac-d9ca-4772-8f6c-89bdfe4ed727"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SaleID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="94" y="3" width="71" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="192535e7-bf14-4270-ae45-3bbef87cc804"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CustomerID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="283" y="3" width="73" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fb25c50a-80b3-4d72-8ef2-096186dd8e8d"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Discount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="379" y="3" width="61" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="97998dbd-79e3-4bb9-b892-49fb33798f4f"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[subtotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="468" y="3" width="70" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fa400e4d-4d27-48a7-bb20-d21a30f16a22"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TotalPrice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="192" y="4" width="73" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c68a137f-9dd1-4ba8-99f3-78f5d1a2a214"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Points]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="21" y="0" width="61" height="20" uuid="77354ed5-2079-4d73-bf09-f81177adb654"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_SaleID}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="94" y="0" width="71" height="20" uuid="0218dbe4-b574-4342-a08f-df1b1fd0e2ce"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_CustomerID}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="283" y="0" width="73" height="20" uuid="0e98c9de-bd75-42a7-b942-e76b34be69b3"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_Discount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="379" y="0" width="61" height="20" uuid="f4fdb21e-d790-4aef-ae16-40bb354671ce"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_subtotal}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="468" y="0" width="70" height="20" uuid="068e61d3-e44b-4dfc-a004-2ae8de16b6e0"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_TotalPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="0" width="73" height="20" uuid="535aad40-f16d-4b02-b02b-d9e62a82108b"/>
+				<textFieldExpression><![CDATA[$F{sales_LoyaltyPoints}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="1badbba7-e601-47e2-a40c-0273bc1d4bb9"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="5" width="40" height="13" backcolor="#E6E6E6" uuid="3f0b5d94-8eb4-4d16-b13b-4df92f418607"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="5" width="100" height="13" uuid="b5991e56-97cc-43c2-bade-ef6b2407e8f3"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
